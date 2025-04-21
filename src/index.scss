@@ -1,0 +1,17 @@
+@use './scss/base';
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: var(--font-size-s);
+  background-color: var(--color-slate-700);
+  color: var(--color-text);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-size: unset;
+  font-weight: unset;
+  color: unset;
+}
