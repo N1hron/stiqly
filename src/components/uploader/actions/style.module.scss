@@ -1,0 +1,31 @@
+@use '../../../scss/mixins' as m;
+
+.actions {
+  padding-right: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+
+  path {
+    stroke: var(--color-icon);
+  }
+}
+
+.removeAll {
+  padding-left: 0.4rem;
+  gap: 0.4rem;
+}
+
+.upload {
+  position: relative;
+  flex-grow: 1;
+
+  .button {
+    padding-left: 0.25rem;
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+}

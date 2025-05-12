@@ -1,0 +1,13 @@
+@use '../../scss/mixins' as m;
+
+.uploader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 16.125rem;
+}
+
+.content {
+  flex-grow: 1;
+  overflow: hidden;
+}

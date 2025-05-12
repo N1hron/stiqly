@@ -20,7 +20,19 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "paths": {
+      "@icons/*": ["./src/assets/icons/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks": ["./src/hooks"],
+      "@store": ["./src/store"],
+      "@slices/*": ["./src/store/slices/*"],
+      "@types": ["./src/types.ts"],
+      "@constants": ["./src/constants.ts"],
+      "@/ffmpeg": ["./src/ffmpeg"],
+      "@utils": ["./src/utils"]
+    }
   },
   "include": ["src"]
 }

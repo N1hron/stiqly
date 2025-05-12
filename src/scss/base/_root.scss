@@ -11,8 +11,22 @@
   --color-slate-900: hsl(222.2, 47.4%, 11.2%);
   --color-slate-950: hsl(222.2, 84%, 4.9%);
 
+  --color-red-50: hsl(355.7 100% 97.3%);
+  --color-red-100: hsl(355.6 100% 94.7%);
+  --color-red-200: hsl(352.7 96.1% 90%);
+  --color-red-300: hsl(352.6 95.7% 81.8%);
+  --color-red-400: hsl(351.3 94.5% 71.4%);
+  --color-red-500: hsl(349.7 89.2% 60.2%);
+  --color-red-600: hsl(346.8 77.2% 49.8%);
+  --color-red-700: hsl(345.3 82.7% 40.8%);
+  --color-red-800: hsl(343.4 79.7% 34.7%);
+  --color-red-900: hsl(341.5 75.5% 30.4%);
+  --color-red-950: hsl(343.1 87.7% 15.9%);
+
   --color-text: var(--color-slate-600);
   --color-text-alt: var(--color-slate-50);
+
+  --color-icon: var(--color-slate-600);
 
   --font-size-xs: 0.875rem;
   --font-size-s: 1rem;
@@ -22,4 +36,6 @@
   --border-width-l: 0.1875rem;
 
   --border-radius: 0.25rem;
+
+  --transition-duration: 0.2s;
 }

@@ -1,0 +1,58 @@
+@use '../../scss/mixins' as m;
+
+$track-width: 0.75rem;
+
+.scrollArea {
+  padding-right: $track-width;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+}
+
+.contentWrapper {
+  overflow: hidden scroll;
+  width: 100%;
+  @include m.hide-scrollbar;
+}
+
+.content {
+  height: fit-content;
+}
+
+.track {
+  --min-thumb-height: 3rem;
+  --preffered-thumb-height: 4rem;
+  --max-thumb-height: 95%;
+
+  position: absolute;
+  width: $track-width;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.thumb {
+  position: absolute;
+  width: 0.25rem;
+  height: clamp(
+    var(--min-thumb-height),
+    var(--preffered-thumb-height),
+    var(--max-thumb-height)
+  );
+  border-radius: var(--border-radius);
+  background-color: var(--color-slate-200);
+  transition: background-color var(--transition-duration);
+  user-select: none;
+
+  @include m.center-horizontal-absolute;
+  @include m.hover {
+    background-color: var(--color-slate-300);
+  }
+
+  &.pressed {
+    background-color: var(--color-slate-300);
+  }
+}

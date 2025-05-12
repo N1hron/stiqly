@@ -1,0 +1,74 @@
+@use '../../../scss/mixins' as m;
+
+.fileList {
+  list-style: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &Item {
+    $item-padding: 0.25rem;
+
+    overflow: hidden;
+
+    .content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: $item-padding;
+      background-color: var(--color-slate-100);
+      border: solid var(--border-width-s) var(--color-slate-200);
+      border-radius: var(--border-radius);
+      font-size: var(--font-size-xs);
+    }
+
+    .name {
+      word-break: break-all;
+    }
+
+    .preview {
+      aspect-ratio: 1920/1080;
+      background-color: var(--color-slate-200);
+      display: flex;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      pointer-events: none;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        margin: auto;
+      }
+    }
+
+    .remove {
+      position: absolute;
+      box-sizing: content-box;
+      padding: $item-padding;
+      width: 2rem;
+      height: 2rem;
+      right: 0;
+      bottom: 0;
+      border-radius: var(--border-radius);
+      background-color: var(--color-slate-100);
+      transform: translateX(100%);
+      visibility: hidden;
+      transition-property: transform, opacity, visibility;
+      transition-duration: calc(var(--transition-duration) / 2);
+
+      path {
+        stroke: var(--color-icon);
+      }
+    }
+
+    &:hover {
+      .remove {
+        transform: translate(0);
+        visibility: visible;
+      }
+    }
+  }
+}

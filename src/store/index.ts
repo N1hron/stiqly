@@ -1,9 +1,10 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-
-const reducer = combineReducers({});
+import { configureStore } from '@reduxjs/toolkit';
+import { filesReducer } from './slices/files';
 
 const store = configureStore({
-  reducer,
+  reducer: {
+    files: filesReducer,
+  },
   devTools: import.meta.env.DEV,
 });
 

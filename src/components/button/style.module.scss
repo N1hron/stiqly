@@ -1,0 +1,66 @@
+@use '../../scss/mixins' as m;
+
+.button {
+  --button-color: var(--color-slate-100);
+  --button-color-border: var(--color-slate-200);
+  --button-color-hover: var(--color-slate-200);
+  --button-color-border-hover: var(--color-slate-300);
+  --button-color-text: var(--color-text);
+  --color-icon: var(--button-color-text);
+
+  height: 2rem;
+  min-width: 2rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--button-color);
+  border: solid var(--border-width-s) var(--button-color-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 var(--border-width-s) var(--border-width-m) 0
+    hsl(from var(--color-slate-950) h s l / 0.05);
+  color: var(--button-color-text);
+  transition-property: background-color, border-color, color;
+  transition-duration: var(--transition-duration);
+  cursor: pointer;
+
+  @include m.hover {
+    background-color: var(--button-color-hover);
+    border-color: var(--button-color-border-hover);
+  }
+
+  &:has(svg:only-child) {
+    padding: 0.25rem;
+  }
+
+  svg {
+    height: 100%;
+    width: auto;
+    flex-shrink: 0;
+
+    path {
+      transition: stroke var(--transition-duration);
+    }
+  }
+
+  &.red {
+    --button-color: var(--color-red-500);
+    --button-color-border: var(--color-red-600);
+    --button-color-hover: var(--color-red-600);
+    --button-color-border-hover: var(--color-red-700);
+    --button-color-text: var(--color-text-alt);
+  }
+
+  &.ghost {
+    --button-color-text: var(--color-text);
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+
+    @include m.hover {
+      --button-color-text: var(--color-text-alt);
+      background-color: var(--button-color);
+    }
+  }
+}
