@@ -18,9 +18,32 @@ const filesSlice = createSlice({
     removeFileById: (state, action: PayloadAction<FileInput['id']>) => {
       return state.filter((file) => file.id != action.payload);
     },
+    setFileSelectionById: (
+      state,
+      action: PayloadAction<Pick<FileInput, 'id' | 'isSelected'>>
+    ) => {
+      const file = state.find((file) => file.id === action.payload.id);
+      if (file) {
+        file.isSelected = action.payload.isSelected;
+      }
+    },
+    setFilesSelection: (
+      state,
+      action: PayloadAction<FileInput['isSelected']>
+    ) => {
+      for (const file of state) {
+        file.isSelected = action.payload;
+      }
+    },
   },
 });
 
 export const filesReducer = filesSlice.reducer;
-export const { addFile, removeAllFiles, removeFileById } = filesSlice.actions;
+export const {
+  addFile,
+  removeAllFiles,
+  removeFileById,
+  setFileSelectionById,
+  setFilesSelection,
+} = filesSlice.actions;
 export * from './selectors';
