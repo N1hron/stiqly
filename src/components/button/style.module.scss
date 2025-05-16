@@ -25,9 +25,58 @@
   transition-duration: var(--transition-duration);
   cursor: pointer;
 
-  @include m.hover {
-    background-color: var(--button-color-hover);
-    border-color: var(--button-color-border-hover);
+  &:disabled {
+    --button-color: var(--color-slate-400);
+    --button-color-text: var(--color-text-alt);
+    box-shadow: none;
+    border: none;
+    cursor: default;
+  }
+
+  &:not(:disabled) {
+    @include m.hover {
+      background-color: var(--button-color-hover);
+      border-color: var(--button-color-border-hover);
+    }
+
+    &.ghost {
+      --button-color-text: var(--color-text);
+
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+
+      @include m.hover {
+        background-color: var(--button-color-hover);
+      }
+    }
+
+    &.colored {
+      --button-color-text: var(--color-text-alt);
+
+      &.ghost {
+        --button-color-text: var(--color-text);
+
+        @include m.hover {
+          --button-color-text: var(--color-text-alt);
+          background-color: var(--button-color);
+        }
+      }
+    }
+
+    &.red {
+      --button-color: var(--color-red-500);
+      --button-color-border: var(--color-red-600);
+      --button-color-hover: var(--color-red-600);
+      --button-color-border-hover: var(--color-red-700);
+    }
+
+    &.green {
+      --button-color: var(--color-green-400);
+      --button-color-border: var(--color-green-500);
+      --button-color-hover: var(--color-green-500);
+      --button-color-border-hover: var(--color-green-600);
+    }
   }
 
   &:has(svg:only-child) {
@@ -41,26 +90,6 @@
 
     path {
       transition: stroke var(--transition-duration);
-    }
-  }
-
-  &.red {
-    --button-color: var(--color-red-500);
-    --button-color-border: var(--color-red-600);
-    --button-color-hover: var(--color-red-600);
-    --button-color-border-hover: var(--color-red-700);
-    --button-color-text: var(--color-text-alt);
-  }
-
-  &.ghost {
-    --button-color-text: var(--color-text);
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
-
-    @include m.hover {
-      --button-color-text: var(--color-text-alt);
-      background-color: var(--button-color);
     }
   }
 }
