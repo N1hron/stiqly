@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+
+import TrashIcon from '@icons/trash.svg?react';
 import { Button } from '@components/button/Button';
 import { FileInput } from '@types';
 import { useAppDispatch } from '@hooks';
@@ -7,7 +9,6 @@ import {
   setFileSelectionById,
   setFilesSelection,
 } from '@slices/files';
-import TrashIcon from '@icons/trash.svg?react';
 
 import styles from './style.module.scss';
 

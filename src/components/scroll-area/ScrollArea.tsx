@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useRef, useState } from 'react';
+
 import { useResizeObserver } from '@hooks';
 
 import styles from './style.module.scss';

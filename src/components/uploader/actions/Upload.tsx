@@ -1,11 +1,12 @@
 import { useRef } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
+
+import UploadIcon from '@icons/upload.svg?react';
+import { Button } from '@components/button/Button';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { addFile, selectAllFiles } from '@slices/files';
 import { FILE_ACCEPT, FILE_LIMIT } from '@constants';
 import { getFileInfo } from '@utils';
-import { Button } from '@components/button/Button';
-import UploadIcon from '@icons/upload.svg?react';
 
 import styles from './style.module.scss';
 

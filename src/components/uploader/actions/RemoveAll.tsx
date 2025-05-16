@@ -1,7 +1,7 @@
+import TrashIcon from '@icons/trash.svg?react';
+import { Button } from '@components/button/Button';
 import { useAppDispatch } from '@hooks';
 import { removeAllFiles } from '@slices/files';
-import { Button } from '@components/button/Button';
-import TrashIcon from '@icons/trash.svg?react';
 
 import styles from './style.module.scss';
 
