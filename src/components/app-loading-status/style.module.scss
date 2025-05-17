@@ -1,0 +1,67 @@
+@use '../../scss/mixins' as m;
+
+.appLoadingStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include m.center-absolute;
+}
+
+.iconWrapper {
+  margin-bottom: 0.75rem;
+
+  svg {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  path {
+    stroke: var(--color-icon);
+  }
+}
+
+.error {
+  color: var(--color-red-500);
+
+  path {
+    stroke: var(--color-red-500);
+  }
+
+  .iconWrapper {
+    margin-bottom: 0;
+  }
+}
+
+.success {
+  color: var(--color-green-500);
+
+  path {
+    stroke: var(--color-green-500);
+  }
+}
+
+.loading {
+  .iconWrapper {
+    :global {
+      animation-name: rotate;
+    }
+
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+.message {
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  user-select: none;
+}
+
+.tryAgain {
+  margin-top: 0.75rem;
+
+  path {
+    stroke: var(--color-icon);
+  }
+}

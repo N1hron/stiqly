@@ -1,3 +1,4 @@
+import { AppLoadingStatus } from '@components/app-loading-status/AppLoadingStatus';
 import { Uploader } from '@components/uploader/Uploader';
 
 import styles from './style.module.scss';
@@ -8,7 +9,9 @@ function App() {
       <div className={styles.wrapper}>
         <aside className={styles.sidebar}></aside>
         <main className={styles.content}>
-          <Uploader />
+          <AppLoadingStatus>
+            <Uploader />
+          </AppLoadingStatus>
         </main>
       </div>
     </div>
