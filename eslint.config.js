@@ -38,6 +38,7 @@ export default tseslint
         ],
         ...reactX.configs['recommended-typescript'].rules,
         ...reactDom.configs.recommended.rules,
+        'react-hooks/exhaustive-deps': 'off',
       },
     }
   )
