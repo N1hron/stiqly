@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
 import ErrorIcon from '@icons/error.svg?react';
 import LoadingIcon from '@icons/loading.svg?react';
@@ -78,19 +79,37 @@ function AppLoadingStatus({ children }: AppLoadingStatusProps) {
     }
   }
 
-  if (!status) return children;
-  const cn = clsx(styles.appLoadingStatus, styles[status]);
   return (
-    <div className={cn}>
-      <div className={styles.iconWrapper}>{renderIcon()}</div>
-      <p className={styles.message}>{renderMessage()}</p>
-      {status === 'error' && (
-        <Button className={styles.tryAgain} ghost onClick={load}>
-          <RefreshIcon />
-          <span>Try again</span>
-        </Button>
+    <AnimatePresence>
+      {status ? (
+        <motion.div
+          className={clsx(styles.appLoadingStatus, styles[status])}
+          key='app-status'
+          transition={{ ease: [0.5, 0, 0.5, 2] }}
+          initial={{ opacity: 0, x: '-50%', y: '-75%' }}
+          animate={{ opacity: 1, x: '-50%', y: '-50%' }}
+          exit={{
+            opacity: 0,
+            x: '-50%',
+            y: '-75%',
+            transition: {
+              ease: [0.5, -1, 0.5, 1],
+            },
+          }}
+        >
+          <div className={styles.iconWrapper}>{renderIcon()}</div>
+          <p className={styles.message}>{renderMessage()}</p>
+          {status === 'error' && (
+            <Button className={styles.tryAgain} ghost onClick={load}>
+              <RefreshIcon />
+              <span>Try again</span>
+            </Button>
+          )}
+        </motion.div>
+      ) : (
+        children
       )}
-    </div>
+    </AnimatePresence>
   );
 }
 
