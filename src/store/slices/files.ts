@@ -1,9 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FileInput } from '@types';
 
-type FilesState = FileInput[];
-
-const initialState: FilesState = [];
+const initialState: FileInput[] = [];
 
 const filesSlice = createSlice({
   name: 'files',
@@ -36,6 +34,9 @@ const filesSlice = createSlice({
       }
     },
   },
+  selectors: {
+    selectAllFiles: (state) => state,
+  },
 });
 
 export const filesReducer = filesSlice.reducer;
@@ -46,4 +47,4 @@ export const {
   setFileSelectionById,
   setFilesSelection,
 } = filesSlice.actions;
-export * from './selectors';
+export const { selectAllFiles } = filesSlice.selectors;
