@@ -1,0 +1,9 @@
+@use '../../scss/mixins' as m;
+
+.appStatus {
+  @include m.center-absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}

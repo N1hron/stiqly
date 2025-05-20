@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FileInput } from '@types';
 
-const initialState: FileInput[] = [];
+type FilesState = FileInput[];
+
+const initialState: FilesState = [];
 
 const filesSlice = createSlice({
   name: 'files',

@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { filesReducer } from './slices/files';
+import { statusReducer } from '@slices/status';
+import { filesReducer } from '@slices/files';
 
 const store = configureStore({
   reducer: {
+    status: statusReducer,
     files: filesReducer,
   },
   devTools: import.meta.env.DEV,

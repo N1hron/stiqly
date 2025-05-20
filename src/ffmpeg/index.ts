@@ -15,4 +15,10 @@ async function loadFFmpeg() {
   });
 }
 
-export { ffmpeg, loadFFmpeg };
+function terminateFFmpeg() {
+  if (ffmpeg.loaded) {
+    ffmpeg.terminate();
+  }
+}
+
+export { ffmpeg, loadFFmpeg, terminateFFmpeg };
