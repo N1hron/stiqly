@@ -3,6 +3,7 @@ import { Component, ReactNode } from 'react';
 type ErrorBoundaryProps = {
   children?: ReactNode;
   fallback?: ReactNode | ((message: string, restore: () => void) => ReactNode);
+  onError?: (message: string) => void;
 };
 
 type ErrorBoundaryState = {
@@ -25,6 +26,12 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     return { hasError: true, message };
   }
 
+  componentDidCatch() {
+    if (this.props.onError) {
+      this.props.onError(this.state.message);
+    }
+  }
+
   restore() {
     this.setState({
       hasError: false,
@@ -34,6 +41,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     const fallback = this.props.fallback;
+
     if (this.state.hasError) {
       if (typeof fallback === 'function') {
         const restore = this.restore.bind(this);

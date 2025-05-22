@@ -17,8 +17,8 @@ export type FileInput = {
 };
 
 export type StatusType = 'loading' | 'success' | 'error';
-export type Status<T extends string = StatusType> = {
-  type: T;
+export type Status = {
+  type: StatusType;
   message: string;
 };
 
@@ -27,9 +27,12 @@ export type ErrorKind = 'loading' | 'runtime';
 export type LoadingKind = 'initial' | 'retry' | 'reload';
 export type ReloadingKind = Exclude<LoadingKind, 'initial'>;
 
-export type AppStatus = Status<AppStatusType> & {
-  errorKind: ErrorKind | null;
-  loadingKind: LoadingKind | null;
+export type AppStatus = {
+  type: AppStatusType;
+  message: string;
+  errorKind?: ErrorKind;
+  loadingKind?: LoadingKind;
+  didInit: boolean;
 };
 
 export type TimeoutId = ReturnType<typeof setTimeout>;

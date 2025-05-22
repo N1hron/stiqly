@@ -1,21 +1,20 @@
 import RefreshIcon from '@icons/refresh.svg?react';
 import { Button } from '@components/button/Button';
 import { useReloadApp } from '@hooks';
-import { ReloadingKind } from '@types';
 
 import styles from './style.module.scss';
 
 type ReloadAppProps = {
-  kind?: ReloadingKind;
+  isRetry?: boolean;
   onReload?: () => void;
 };
 
-function ReloadApp({ kind, onReload }: ReloadAppProps) {
+function ReloadApp({ isRetry = false, onReload }: ReloadAppProps) {
   const reloadApp = useReloadApp();
-  const label = kind === 'retry' ? 'Try again' : 'Restart application';
+  const label = isRetry ? 'Try again' : 'Restart application';
 
   function onClick() {
-    reloadApp(kind);
+    reloadApp(isRetry);
     if (onReload) onReload();
   }
 

@@ -1,35 +1,26 @@
-import { ReloadingKind, StatusType } from '@types';
-
 import { StatusMessage } from '@components/status-message/StatusMessage';
 import { ReloadApp } from '@components/reload-app/ReloadApp';
 
 import styles from './style.module.scss';
+import { useAppSelector } from '@hooks';
+import { selectStatus } from '@slices/status';
 
-type AppStatusProps<S extends StatusType> = {
-  type: S;
-  message: string;
-  appReloadKind?: S extends 'error' ? ReloadingKind : never;
-} & (S extends 'error'
-  ? {
-      appReloadKind?: ReloadingKind;
-      onAppReload?: () => void;
-    }
-  : {
-      appReloadKind?: never;
-      onAppReload?: never;
-    });
+type AppStatusProps = {
+  onReload?: () => void;
+};
 
-function AppStatus<S extends StatusType>({
-  type,
-  message,
-  appReloadKind,
-  onAppReload,
-}: AppStatusProps<S>) {
+function AppStatus({ onReload }: AppStatusProps) {
+  const status = useAppSelector(selectStatus);
+
+  if (status.type === 'running') return null;
   return (
     <div className={styles.appStatus}>
-      <StatusMessage type={type} message={message} />
-      {type === 'error' && (
-        <ReloadApp kind={appReloadKind} onReload={onAppReload} />
+      <StatusMessage type={status.type} message={status.message} />
+      {status.type === 'error' && (
+        <ReloadApp
+          isRetry={status.errorKind === 'loading'}
+          onReload={onReload}
+        />
       )}
     </div>
   );

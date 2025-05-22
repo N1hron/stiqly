@@ -1,32 +1,20 @@
 import { ReactNode } from 'react';
 
 import { Uploader } from '@components/uploader/Uploader';
-import { ErrorBoundary } from '@components/ErrorBoundary';
 import { AppLoader } from '@components/AppLoader';
-import { AppStatus } from '@components/app-status/AppStatus';
+import { AppErrorBoundary } from '@components/AppErrorBoundary';
 
 import styles from './style.module.scss';
 
 function App() {
   return (
     <AppLayout>
-      <ErrorBoundary fallback={renderErrorMessage}>
+      <AppErrorBoundary>
         <AppLoader>
           <Uploader />
         </AppLoader>
-      </ErrorBoundary>
+      </AppErrorBoundary>
     </AppLayout>
-  );
-}
-
-function renderErrorMessage(message: string, restore: () => void) {
-  return (
-    <AppStatus
-      type='error'
-      message={message}
-      appReloadKind='reload'
-      onAppReload={restore}
-    />
   );
 }
 

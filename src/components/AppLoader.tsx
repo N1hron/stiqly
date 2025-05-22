@@ -12,10 +12,12 @@ function AppLoader({ children }: AppLoaderProps) {
   const status = useAppSelector(selectStatus);
   const loadApp = useLoadApp();
 
-  useEffect(loadApp, []);
+  useEffect(() => {
+    if (!status.didInit) loadApp();
+  }, []);
 
   if (status.type === 'running') return children;
-  return <AppStatus type={status.type} message={status.message} />;
+  return <AppStatus />;
 }
 
 export { AppLoader };

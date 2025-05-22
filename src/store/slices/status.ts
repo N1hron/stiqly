@@ -7,7 +7,7 @@ const initialState: StatusState = {
   type: 'loading',
   message: 'Starting up application',
   loadingKind: 'initial',
-  errorKind: null,
+  didInit: false,
 };
 
 const statusSlice = createSlice({

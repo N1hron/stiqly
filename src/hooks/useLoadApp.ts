@@ -16,6 +16,7 @@ function useLoadApp() {
           setStatus({
             type: 'success',
             message: 'Successfully started application',
+            didInit: true,
           })
         );
 
@@ -26,7 +27,7 @@ function useLoadApp() {
             setStatus({
               type: 'running',
               message: '',
-              loadingKind: null,
+              loadingKind: undefined,
             })
           );
         }, 1000);
@@ -37,7 +38,7 @@ function useLoadApp() {
             type: 'error',
             message: 'Could not start application',
             errorKind: 'loading',
-            loadingKind: null,
+            loadingKind: undefined,
           })
         );
       });
